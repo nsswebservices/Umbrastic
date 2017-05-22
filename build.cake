@@ -152,7 +152,7 @@ Task("Package-Umbrastic-Core")
                 new NuSpecContent { Source = "Umbrastic.Core.pdb", Target = "lib/net452" },
             },
             Dependencies = new [] {
-				new NuSpecDependency { Id = "Nest.Indexing", Version = "0.1.0" },
+				new NuSpecDependency { Id = "Nest.Indexing", Version = "0.1.0-ci0003" },
                 new NuSpecDependency { Id = "UmbracoCms.Core", Version = "[7.6.0,8.0)" }
             }
         };
