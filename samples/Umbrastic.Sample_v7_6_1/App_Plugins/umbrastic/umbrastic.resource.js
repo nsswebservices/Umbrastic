@@ -7,7 +7,7 @@ angular.module("umbraco.resources")
 
         return {
             getVersionNumber: function () {
-                return $http.get(apiUrl("SearchVersionInfo")).then(function (data) {
+                return $http.get(apiUrl("SearchVersionInfo")).then(function(data) {
                     return data.data.version;
                 });
             },

@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Umbrastic", "Umbrastic\Umbr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Umbrastic.Core", "Umbrastic.Core\Umbrastic.Core.csproj", "{3E4E4525-E340-424D-B525-9A6B43715A96}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Umbrastic.Sample_v7_6_1", "..\samples\Umbrastic.Sample_v7_6_1\Umbrastic.Sample_v7_6_1.csproj", "{1E2B3239-FACD-4C58-8C8C-E09EF17D22D5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{3E4E4525-E340-424D-B525-9A6B43715A96}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3E4E4525-E340-424D-B525-9A6B43715A96}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3E4E4525-E340-424D-B525-9A6B43715A96}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1E2B3239-FACD-4C58-8C8C-E09EF17D22D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E2B3239-FACD-4C58-8C8C-E09EF17D22D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E2B3239-FACD-4C58-8C8C-E09EF17D22D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E2B3239-FACD-4C58-8C8C-E09EF17D22D5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

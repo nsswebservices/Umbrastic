@@ -21,7 +21,7 @@
                 deferred.reject(busyState);
             } else {
                 deferred.resolve(busyState);
-                $timeout(function() {
+                $timeout(function () {
                     $scope.getIndicesInfo();
                 }, 1000);
             }
@@ -29,7 +29,7 @@
         return deferred.promise;
     }
 
-    $scope.isBusy = function() {
+    $scope.isBusy = function () {
         return $scope.busyState.Busy;
     }
 
@@ -45,10 +45,10 @@
     //    });
     //};
 
-    $scope.deleteIndex = function(indexName) {
-        withBusyCheck(2000).then(function() {
+    $scope.deleteIndex = function (indexName) {
+        withBusyCheck(2000).then(function () {
             return umbrasticResource.deleteIndexByName(indexName);
-        }).always(function() {
+        }).always(function () {
             $scope.getIndicesInfo();
         });
     }
@@ -56,7 +56,7 @@
     $scope.activateIndex = function (indexName) {
         withBusyCheck(2000).then(function () {
             return umbrasticResource.activateIndexByName(indexName);
-        }).always(function() {
+        }).always(function () {
             $scope.getIndicesInfo();
             $scope.getContentServicesList();
             $scope.getMediaServicesList();
@@ -97,7 +97,7 @@
             }, function () {
                 notificationsService.error("Content Index Rebuild", "Content Index Rebuild Failed");
             });
-        }).always(function() {
+        }).always(function () {
             $scope.getIndicesInfo();
         });
     };
@@ -124,19 +124,19 @@
             notificationsService.success("Index Create", "Index was added");
         }, function () {
             notificationsService.error("Index Create", "Index create Failed");
-        }).always(function() {
+        }).always(function () {
             $scope.getIndicesInfo();
         });
     };
 
     $scope.setIndexStatusRowStyle = function (item) {
-        switch(item.Status) {
+        switch (item.Status) {
             case "Active":
                 return { "font-weight": "bold" };
             case "Busy":
                 return { "font-style": "italic" };
             default:
-                return { };
+                return {};
         }
     }
 

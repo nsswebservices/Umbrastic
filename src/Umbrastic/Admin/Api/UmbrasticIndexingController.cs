@@ -29,22 +29,18 @@ namespace Umbrastic.Admin.Api
             _indexName = UmbracoSearchFactory.Client.ConnectionSettings.DefaultIndex;
         }
 
-        [HttpGet]
-        public IHttpActionResult MediaIndexServicesList()
-        {
-            //var media = UmbracoSearchFactory.GetMediaIndexServices();
+        //[HttpGet]
+        //public IHttpActionResult MediaIndexServicesList()
+        //{
+        //    var media = UmbracoSearchFactory.GetMediaIndexServices();
 
-            //return Ok(media.Select(x => new
-            //{
-            //    x.DocumentTypeName,
-            //    x.GetType().Name,
-            //    Count = x.CountOfDocumentsForIndex(_indexName)
-            //}));
-
-
-            List<object> services = new List<object>();
-            return Ok(services);
-        }
+        //    return Ok(media.Select(x => new
+        //    {
+        //        x.DocumentTypeName,
+        //        x.GetType().Name,
+        //        Count = x.CountOfDocumentsForIndex(_indexName)
+        //    }));
+        //}
 
         [HttpGet]
         public IHttpActionResult ContentIndexServicesList()
@@ -102,16 +98,14 @@ namespace Umbrastic.Admin.Api
             return Ok();
         }
 
-        [HttpPost]
-        public IHttpActionResult RebuildMediaIndex([FromBody] string indexName)
-        {
-            //var indexer = new MediaIndexer();
-            //indexer.Build(indexName);
+        //[HttpPost]
+        //public IHttpActionResult RebuildMediaIndex([FromBody] string indexName)
+        //{
+        //    var indexer = new MediaIndexer();
+        //    indexer.Build(indexName);
 
-            //return Ok();
-
-            return Ok();
-        }
+        //    return Ok();
+        //}
 
         [HttpGet]
         public async Task<IHttpActionResult> SearchVersionInfo()
