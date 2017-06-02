@@ -3,13 +3,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Text;
 using System.Threading.Tasks;
 using Umbraco.Core.Logging;
 using Umbraco.Core.Models;
 using Umbrastic.Core.Config;
 using Umbrastic.Core.Indexing.Content;
 using Nest.Indexing.Management;
+using Umbrastic.Core.Indexing.Media;
 
 namespace Umbrastic.Core.Utils
 {
@@ -18,7 +18,7 @@ namespace Umbrastic.Core.Utils
         private static IElasticClient _client;
 
         private static readonly IDictionary<IContentIndexService<IContent>, Func<IContent, bool>> ContentIndexServiceRegistry = new Dictionary<IContentIndexService<IContent>, Func<IContent, bool>>();
-        //private static readonly IDictionary<IMediaIndexService, Func<IMedia, bool>> MediaIndexServiceRegistry = new Dictionary<IMediaIndexService, Func<IMedia, bool>>();
+        private static readonly IDictionary<IMediaIndexService<IMedia>, Func<IMedia, bool>> MediaIndexServiceRegistry = new Dictionary<IMediaIndexService<IMedia>, Func<IMedia, bool>>();
 
         private static IIndexCreator _indexStrategy;
 
@@ -27,10 +27,10 @@ namespace Umbrastic.Core.Utils
             return ContentIndexServiceRegistry.Keys;
         }
 
-        //public static IEnumerable<IMediaIndexService> GetMediaIndexServices()
-        //{
-        //    return MediaIndexServiceRegistry.Keys;
-        //}
+        public static IEnumerable<IMediaIndexService<IMedia>> GetMediaIndexServices()
+        {
+            return MediaIndexServiceRegistry.Keys;
+        }
 
         public static void RegisterIndexStrategy(IIndexCreator strategy)
         {
@@ -51,38 +51,38 @@ namespace Umbrastic.Core.Utils
             }
         }
 
-        //public static void RegisterMediaIndexService<TIndexService>(TIndexService indexService, Func<IMedia, bool> resolver) where TIndexService : IMediaIndexService
-        //{
-        //    if (!MediaIndexServiceRegistry.ContainsKey(indexService))
-        //    {
-        //        LogHelper.Info<TIndexService>(() => $"Registered media index service for [{indexService.GetType().Name}]");
-        //        MediaIndexServiceRegistry.Add(indexService, resolver);
-        //    }
-        //    else
-        //    {
-        //        LogHelper.Warn<TIndexService>($"Registration for media index service [{indexService.GetType().Name}] already exists");
-        //    }
-        //}
+        public static void RegisterMediaIndexService<TIndexService>(TIndexService indexService, Func<IMedia, bool> resolver) where TIndexService : IMediaIndexService<IMedia>
+        {
+            if (!MediaIndexServiceRegistry.ContainsKey(indexService))
+            {
+                LogHelper.Info<TIndexService>(() => $"Registered media index service for [{indexService.GetType().Name}]");
+                MediaIndexServiceRegistry.Add(indexService, resolver);
+            }
+            else
+            {
+                LogHelper.Warn<TIndexService>($"Registration for media index service [{indexService.GetType().Name}] already exists");
+            }
+        }
 
         public static IIndexCreator GetIndexStrategy()
         {
             return _indexStrategy;
         }
 
-        //public static IMediaIndexService GetMediaIndexService(IMedia media)
-        //{
-        //    return MediaIndexServiceRegistry?.FirstOrDefault(x => x.Value(media)).Key;
-        //}
+        public static IMediaIndexService<IMedia> GetMediaIndexService(IMedia media)
+        {
+            return MediaIndexServiceRegistry?.FirstOrDefault(x => x.Value(media)).Key;
+        }
 
-        //public static IMediaIndexService GetMediaIndexService(Func<IMediaIndexService, bool> predicate)
-        //{
-        //    return MediaIndexServiceRegistry?.Keys.FirstOrDefault(predicate);
-        //}
+        public static IMediaIndexService<IMedia> GetMediaIndexService(Func<IMediaIndexService<IMedia>, bool> predicate)
+        {
+            return MediaIndexServiceRegistry?.Keys.FirstOrDefault(predicate);
+        }
 
-        //public static IMediaIndexService GetMediaIndexService(string documentTypeName)
-        //{
-        //    return MediaIndexServiceRegistry?.Keys.FirstOrDefault(x => x.DocumentTypeName.Equals(documentTypeName, StringComparison.OrdinalIgnoreCase));
-        //}
+        public static IMediaIndexService<IMedia> GetMediaIndexService(string documentTypeName)
+        {
+            return MediaIndexServiceRegistry?.Keys.FirstOrDefault(x => x.DocumentTypeName.Equals(documentTypeName, StringComparison.OrdinalIgnoreCase));
+        }
 
         public static IContentIndexService<IContent> GetContentIndexService(IContent content)
         {
