@@ -39,11 +39,11 @@
         });
     };
 
-    //$scope.getMediaServicesList = function () {
-    //    umbrasticResource.getMediaIndexServices().then(function (data) {
-    //        $scope.mediaServices = data;
-    //    });
-    //};
+    $scope.getMediaServicesList = function () {
+        umbrasticResource.getMediaIndexServices().then(function (data) {
+            $scope.mediaServices = data;
+        });
+    };
 
     $scope.deleteIndex = function(indexName) {
         withBusyCheck(2000).then(function() {
@@ -102,17 +102,17 @@
         });
     };
 
-    //$scope.rebuildMediaIndex = function (indexName) {
-    //    withBusyCheck(5000).then(function () {
-    //        return umbrasticResource.rebuildMediaIndex(indexName).then(function () {
-    //            notificationsService.success("Media Index Rebuild", "Media Index rebuild completed");
-    //        }, function () {
-    //            notificationsService.error("Media Index Rebuild", "Media Index Rebuild Failed");
-    //        });
-    //    }).always(function () {
-    //        $scope.getIndicesInfo();
-    //    });
-    //};
+    $scope.rebuildMediaIndex = function (indexName) {
+        withBusyCheck(5000).then(function () {
+            return umbrasticResource.rebuildMediaIndex(indexName).then(function () {
+                notificationsService.success("Media Index Rebuild", "Media Index rebuild completed");
+            }, function () {
+                notificationsService.error("Media Index Rebuild", "Media Index Rebuild Failed");
+            });
+        }).always(function () {
+            $scope.getIndicesInfo();
+        });
+    };
 
     $scope.refreshIndexList = function () {
         $scope.getIndicesInfo();
