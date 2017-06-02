@@ -400,8 +400,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Features\Search\Models\ArticleContentDocument.cs" />
+    <Compile Include="Features\Search\Models\ImageMediaDocument.cs" />
     <Compile Include="Features\Search\Models\UmbracoDocument.cs" />
     <Compile Include="Features\Search\Services\ArticleContentIndexService.cs" />
+    <Compile Include="Features\Search\Services\ImageMediaIndexService.cs" />
     <Compile Include="Features\Search\UmbrasticStartup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

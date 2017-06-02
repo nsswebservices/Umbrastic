@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using Umbraco.Core.Models;
 using Umbrastic.Core.EventHandlers;
 using Umbrastic.Core.Indexing.Content;
+using Umbrastic.Core.Indexing.Media;
 using Umbrastic.Sample_v7_6_1.Features.Search.Services;
 
 namespace Umbrastic.Sample_v7_6_1.Features.Search
@@ -24,6 +25,11 @@ namespace Umbrastic.Sample_v7_6_1.Features.Search
         protected override IEnumerable<IContentIndexService<IContent>> RegisterContentIndexingServices()
         {
             yield return new ArticleContentIndexService();
+        }
+
+        protected override IEnumerable<IMediaIndexService<IMedia>> RegisterMediaIndexingServices()
+        {
+            yield return new ImageMediaIndexService();
         }
 
         internal class UmbrasticIndexCreationStrategy : IndexCreator
