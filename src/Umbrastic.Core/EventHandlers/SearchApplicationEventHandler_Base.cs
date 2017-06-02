@@ -45,8 +45,8 @@ namespace Umbrastic.Core.EventHandlers
 
             CacheRefresherBase<PageCacheRefresher>.CacheUpdated += CacheRefresherBaseOnCacheUpdated;
 
-            //MediaService.Saved += MediaServiceOnSaved;
-            //MediaService.Deleted += MediaServiceOnDeleted;
+            MediaService.Saved += MediaServiceOnSaved;
+            MediaService.Deleted += MediaServiceOnDeleted;
 
             InstallServerVars();
         }
@@ -64,10 +64,10 @@ namespace Umbrastic.Core.EventHandlers
                 UmbracoSearchFactory.RegisterContentIndexService(service, service.ShouldIndex);
             }
 
-            //foreach (var service in RegisterMediaIndexingServices())
-            //{
-            //    UmbracoSearchFactory.RegisterMediaIndexService(service, service.ShouldIndex);
-            //}
+            foreach (var service in RegisterMediaIndexingServices())
+            {
+                UmbracoSearchFactory.RegisterMediaIndexService(service, service.ShouldIndex);
+            }
         }
 
         #region Event Handlers
@@ -86,15 +86,15 @@ namespace Umbrastic.Core.EventHandlers
             IndexContentCore(e.PublishedEntities, e.Messages);
         }
 
-        //private void MediaServiceOnDeleted(IMediaService sender, DeleteEventArgs<IMedia> deleteEventArgs)
-        //{
-        //    RemoveMediaCore(deleteEventArgs.DeletedEntities, deleteEventArgs.Messages);
-        //}
+        private void MediaServiceOnDeleted(IMediaService sender, DeleteEventArgs<IMedia> deleteEventArgs)
+        {
+            RemoveMediaCore(deleteEventArgs.DeletedEntities, deleteEventArgs.Messages);
+        }
 
-        //private void MediaServiceOnSaved(IMediaService sender, SaveEventArgs<IMedia> saveEventArgs)
-        //{
-        //    IndexMediaCore(saveEventArgs.SavedEntities, saveEventArgs.Messages);
-        //}
+        private void MediaServiceOnSaved(IMediaService sender, SaveEventArgs<IMedia> saveEventArgs)
+        {
+            IndexMediaCore(saveEventArgs.SavedEntities, saveEventArgs.Messages);
+        }
 
         private void CacheRefresherBaseOnCacheUpdated(PageCacheRefresher sender, CacheRefresherEventArgs cacheRefresherEventArgs)
         {
