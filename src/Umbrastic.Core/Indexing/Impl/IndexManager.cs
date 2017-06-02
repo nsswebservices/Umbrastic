@@ -52,6 +52,7 @@ namespace Umbrastic.Core.Indexing.Impl
             if (response.IndexResponse.IsValid)
             {                
                 Parallel.ForEach(UmbracoSearchFactory.GetContentIndexServices(), c => c.UpdateIndexTypeMapping(response.IndexName));
+                Parallel.ForEach(UmbracoSearchFactory.GetMediaIndexServices(), c => c.UpdateIndexTypeMapping(response.IndexName));
             }
         }
 
