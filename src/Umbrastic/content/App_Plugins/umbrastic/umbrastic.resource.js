@@ -25,9 +25,9 @@ angular.module("umbraco.resources")
             rebuildContentIndex: function (indexName) {
                 return umbRequestHelper.resourcePromise($http.post(apiUrl("RebuildContentIndex"), '"' + indexName + '"'));
             },
-            //rebuildMediaIndex: function (indexName) {
-            //    return umbRequestHelper.resourcePromise($http.post(apiUrl("RebuildMediaIndex"), '"' + indexName + '"'));
-            //},
+            rebuildMediaIndex: function (indexName) {
+                return umbRequestHelper.resourcePromise($http.post(apiUrl("RebuildMediaIndex"), '"' + indexName + '"'));
+            },
             createIndex: function () {
                 return umbRequestHelper.resourcePromise($http.post(apiUrl("CreateIndex")));
             },
@@ -40,9 +40,9 @@ angular.module("umbraco.resources")
             getContentIndexServices: function () {
                 return umbRequestHelper.resourcePromise($http.get(apiUrl("ContentIndexServicesList")));
             },
-            //getMediaIndexServices: function () {
-            //    return umbRequestHelper.resourcePromise($http.get(apiUrl("MediaIndexServicesList")));
-            //},
+            getMediaIndexServices: function () {
+                return umbRequestHelper.resourcePromise($http.get(apiUrl("MediaIndexServicesList")));
+            },
             getSettings: function () {
                 return Umbraco.Sys.ServerVariables.umbracoPlugins.umbrastic;
             },
