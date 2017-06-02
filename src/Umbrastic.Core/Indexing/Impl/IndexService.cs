@@ -10,9 +10,9 @@ using Umbraco.Core.Services;
 using Umbraco.Web;
 using Umbrastic.Core.Config;
 using Umbrastic.Core.Domain;
-using Umbrastic.Core.Indexing;
+using Umbrastic.Core.Utils;
 
-namespace Umbrastic.Core.Utils
+namespace Umbrastic.Core.Indexing.Impl
 {
     public abstract class IndexService<TUmbracoDocument, TUmbracoEntity, TSearchSettings> : IIndexService<TUmbracoEntity>
           where TUmbracoEntity : class, IContentBase

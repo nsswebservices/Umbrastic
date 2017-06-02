@@ -2,14 +2,12 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Umbraco.Core.Models;
 using Umbraco.Core.Services;
 using Umbraco.Web;
 using Umbrastic.Core.Config;
 using Umbrastic.Core.Domain;
-using Umbrastic.Core.Utils;
+using Umbrastic.Core.Indexing.Impl;
 
 namespace Umbrastic.Core.Indexing.Content.Impl
 {
