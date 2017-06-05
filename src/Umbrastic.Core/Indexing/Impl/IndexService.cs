@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using Umbraco.Core;
 using Umbraco.Core.Logging;
 using Umbraco.Core.Models;
 using Umbraco.Core.Services;
@@ -173,10 +174,11 @@ namespace Umbrastic.Core.Indexing.Impl
             string indexName = null)
         {
             var idValue = IdFor(entity);
-            //TODO: Requires testing!!
-            if (client.DocumentExists<TUmbracoDocument>(indexName).Exists)
+            var documentPath = DocumentPath<TUmbracoDocument>.Id(idValue);
+
+            if (client.DocumentExists(documentPath, d => d.Index(indexName)).Exists)
             {
-                client.Delete<TUmbracoDocument>(indexName);
+                client.Delete(documentPath, d => d.Index(indexName));
             }
         }
 

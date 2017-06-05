@@ -42,5 +42,12 @@ namespace Umbrastic.Core.Indexing.Media.Impl
         {
             return entity.ContentType.Alias.Equals(IndexTypeName, StringComparison.CurrentCultureIgnoreCase);
         }
+
+        protected override string UrlFor(IMedia contentInstance)
+        {
+            var helper = new UmbracoHelper(UmbracoContext.Current);
+            var media = helper.TypedMedia(contentInstance.Id);
+            return media.Url();
+        }
     }
 }
