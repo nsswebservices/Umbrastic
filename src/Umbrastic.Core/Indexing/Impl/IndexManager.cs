@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Umbraco.Web;
 using Umbrastic.Core.Utils;
-using Nest.Indexing.Management;
+using Umbrastic.Core.Management;
 
 namespace Umbrastic.Core.Indexing.Impl
 {
@@ -90,10 +90,10 @@ namespace Umbrastic.Core.Indexing.Impl
         {
             var response = await _client.GetMappingAsync(new GetMappingRequest(indexName, "*"));
 
-            // TODO : Validate here, test the fuck out of this
-            var mappings = response.IsValid ? response.Mappings : new ReadOnlyDictionary<string, IReadOnlyDictionary<string, TypeMapping>>(null);
+            // TODO : Validate here
+            var mappings = response.IsValid ? response.Indices : new ReadOnlyDictionary<IndexName, IndexMappings>(null);
             var stream = new MemoryStream();
-            _client.Serializer.Serialize(mappings, stream);
+            _client.SourceSerializer.Serialize(mappings, stream);
             if (stream.CanSeek)
             {
                 stream.Seek(0, SeekOrigin.Begin);

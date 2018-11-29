@@ -1,7 +1,7 @@
 ﻿using Nest;
-using Nest.Indexing.Management;
-using Nest.Indexing.Management.Impl;
-using Nest.Indexing.Settings;
+using Umbrastic.Core.Management;
+using Umbrastic.Core.Management.Impl;
+using Umbrastic.Core.Settings;
 using System.Collections.Generic;
 using Umbraco.Core.Models;
 using Umbrastic.Core.EventHandlers;

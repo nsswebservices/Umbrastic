@@ -68,7 +68,7 @@ namespace Umbrastic.Core.Indexing.Impl
         public void UpdateIndexTypeMapping(string indexName)
         {
             var mapping = _client.GetMapping<TUmbracoDocument>(m => m.Index(indexName));
-            if (mapping.Mapping == null && !mapping.Mappings.Any())
+            if (!mapping.IsValid)
             {
                 UpdateIndexTypeMappingCore(_client, indexName);
                 LogHelper.Info(GetType(),

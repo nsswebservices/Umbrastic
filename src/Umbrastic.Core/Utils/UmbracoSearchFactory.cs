@@ -8,7 +8,7 @@ using Umbraco.Core.Logging;
 using Umbraco.Core.Models;
 using Umbrastic.Core.Config;
 using Umbrastic.Core.Indexing.Content;
-using Nest.Indexing.Management;
+using Umbrastic.Core.Management;
 using Umbrastic.Core.Indexing.Media;
 
 namespace Umbrastic.Core.Utils

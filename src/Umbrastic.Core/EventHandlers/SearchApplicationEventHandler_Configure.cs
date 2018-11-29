@@ -3,7 +3,7 @@ using Nest;
 using Umbraco.Core.Logging;
 using Umbrastic.Core.Config;
 using Umbrastic.Core.Utils;
-using Nest.Indexing.Management;
+using Umbrastic.Core.Management;
 
 namespace Umbrastic.Core.EventHandlers
 {
