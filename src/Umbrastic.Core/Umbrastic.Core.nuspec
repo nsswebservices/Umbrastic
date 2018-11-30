@@ -14,7 +14,7 @@
 		</dependencies>	
 	</metadata>
 	<files>
-		<file src="Umbrastic.Core.dll" target="lib/net452" />
-		<file src="Umbrastic.Core.pdb" target="lib/net452" />
+		<file src="Umbrastic.Core.dll" target="lib/net461" />
+		<file src="Umbrastic.Core.pdb" target="lib/net461" />
 	</files>  
 </package>

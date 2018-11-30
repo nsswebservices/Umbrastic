@@ -1,13 +1,27 @@
 <?xml version="1.0"?>
 <package>
-  <metadata>
-    <id>$id$</id>
-    <version>$version$</version>
-    <authors>NSS Web Services</authors>
-    <owners>NSS Web Services</owners>
-    <licenseUrl>https://raw.githubusercontent.com/nsswebservices/Umbrastic/master/LICENSE</licenseUrl>
-    <projectUrl>https://github.com/nsswebservices/Umbrastic</projectUrl>
-    <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>$description$</description>
-  </metadata>
+	<metadata>
+		<id>$id$</id>
+		<version>$version$</version>
+		<authors>NSS Web Services</authors>
+		<owners>NSS Web Services</owners>
+		<licenseUrl>https://raw.githubusercontent.com/nsswebservices/Umbrastic/master/LICENSE</licenseUrl>
+		<projectUrl>https://github.com/nsswebservices/Umbrastic</projectUrl>
+		<requireLicenseAcceptance>false</requireLicenseAcceptance>
+		<description>Provides integration between Umbraco content and Elasticsearch as a search platform</description>
+		<dependencies>
+			<dependency id="UmbracoCms.Core" version="[7.6.0,8.0)" />
+			<dependency id="Umbrastic.Core" version="[$version$]" />
+		</dependencies>
+	</metadata>
+	<files>
+		<file src="Umbrastic.dll" target="lib/net461" />
+		<file src="Umbrastic.pdb" target="lib/net461" />
+		<file src="content/web.config.install.xdt" target="content" />
+		<file src="content/web.config.uninstall.xdt" target="content" />
+		<file src="content/dashboard.config.install.xdt" target="content/config" />
+		<file src="content/dashboard.config.uninstall.xdt" target="content/config" />
+		<file src="readme.txt" target="" />
+		<file src="content/App_Plugins/umbrastic/**/*" target="" />	
+	</files>  	
 </package>
