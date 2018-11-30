@@ -8,6 +8,14 @@
     <licenseUrl>https://raw.githubusercontent.com/nsswebservices/Umbrastic/master/LICENSE</licenseUrl>
     <projectUrl>https://github.com/nsswebservices/Umbrastic</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>$description$</description>
+    <description>Provides integration between Umbraco content and Elasticsearch as a search platform</description>
+	<files>
+		<file src="Umbrastic.Core.dll" target="lib/net452">
+		<file src="Umbrastic.Core.pdb" target="lib/net452">
+	</files>
+	<dependencies>
+		<dependency id="UmbracoCms.Core" version="[7.6.0,8.0)" />
+	</dependencies>	
+  </metadata>
   </metadata>  
 </package>
