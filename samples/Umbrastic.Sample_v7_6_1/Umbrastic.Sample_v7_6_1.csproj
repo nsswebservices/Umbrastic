@@ -356,6 +356,8 @@
     <Content Include="App_Plugins\umbrastic\package.manifest" />
     <Content Include="Views\Article.cshtml" />
     <Content Include="Views\Home.cshtml" />
+    <Content Include="Views\Search\Index.cshtml" />
+    <Content Include="Views\Guide.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -397,9 +399,13 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\UmbracoApplicationEventHandler.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
+    <Compile Include="Features\Search\Models\GuideContentDocument.cs" />
     <Compile Include="Features\Search\Models\ArticleContentDocument.cs" />
     <Compile Include="Features\Search\Models\ImageMediaDocument.cs" />
     <Compile Include="Features\Search\Models\UmbracoDocument.cs" />
+    <Compile Include="Features\Search\Services\GuideContentIndexService.cs" />
     <Compile Include="Features\Search\Services\ArticleContentIndexService.cs" />
     <Compile Include="Features\Search\Services\ImageMediaIndexService.cs" />
     <Compile Include="Features\Search\UmbrasticStartup.cs" />

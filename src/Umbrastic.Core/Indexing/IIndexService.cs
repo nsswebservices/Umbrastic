@@ -1,7 +1,9 @@
-﻿using System;
+﻿using Nest;
+using System;
 using System.Collections.Generic;
 using Umbraco.Core.Models;
 using Umbraco.Core.Services;
+using Umbrastic.Core.Domain;
 
 namespace Umbrastic.Core.Indexing
 {
@@ -20,7 +22,8 @@ namespace Umbrastic.Core.Indexing
 
         bool ShouldIndex(TEntity entity);
 
-        void UpdateIndexTypeMapping(string indexName);
+        TypeMappingDescriptor<IUmbracoDocument> UpdateTypeMappingDescriptor(
+            TypeMappingDescriptor<IUmbracoDocument> typeMappingDescriptor);
 
         string EntityTypeName { get; }
 

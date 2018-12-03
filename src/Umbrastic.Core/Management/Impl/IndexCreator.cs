@@ -1,6 +1,7 @@
 ﻿using Nest;
 using System;
 using System.Threading.Tasks;
+using Umbrastic.Core.Domain;
 using Umbrastic.Core.Settings;
 
 namespace Umbrastic.Core.Management.Impl
@@ -26,7 +27,7 @@ namespace Umbrastic.Core.Management.Impl
             return new IndexCreationResult(success, response, ex, indexName);
         }
 
-        public IIndexCreationResult Create()
+        public IIndexCreationResult Create(TypeMappingDescriptor<IUmbracoDocument> typeMappingDescriptor)
         {
             var indexName = CreateIndexName(_client.ConnectionSettings.DefaultIndex);
 
@@ -35,7 +36,8 @@ namespace Umbrastic.Core.Management.Impl
                 var indexResponse = _client.CreateIndex(indexName, i =>
                 {
                     i.Index(indexName);
-                    i.InitializeUsing(_settings.Create());                    
+                    i.InitializeUsing(_settings.Create());
+                    i.Mappings(m => m.Map<IUmbracoDocument>(t => typeMappingDescriptor));
                     return i;
                 });
                
@@ -53,7 +55,7 @@ namespace Umbrastic.Core.Management.Impl
             return name;
         }
 
-        public async Task<IIndexCreationResult> CreateAsync()
+        public async Task<IIndexCreationResult> CreateAsync(TypeMappingDescriptor<IUmbracoDocument> typeMappingDescriptor)
         {
             var indexName = CreateIndexName(_client.ConnectionSettings.DefaultIndex);       
 
@@ -62,7 +64,8 @@ namespace Umbrastic.Core.Management.Impl
                 var indexResponse = await _client.CreateIndexAsync(indexName, i =>
                 {
                     i.Index(indexName);
-                    i.InitializeUsing(_settings.Create());                    
+                    i.InitializeUsing(_settings.Create());
+                    i.Mappings(m => m.Map<IUmbracoDocument>(t => typeMappingDescriptor));
                     return i;
                 });
                                 

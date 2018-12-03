@@ -7,8 +7,8 @@ using Umbrastic.Core.Attributes;
 
 namespace Umbrastic.Sample_v7_6_1.Features.Search.Models
 {
-    [DocumentType(Name = "article")]
-    public class ArticleContentDocument : UmbracoDocument
+    [DocumentType(Name = "guide")]
+    public class GuideContentDocument : UmbracoDocument
     {
     }
 }

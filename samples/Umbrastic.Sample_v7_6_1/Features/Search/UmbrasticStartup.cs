@@ -25,6 +25,7 @@ namespace Umbrastic.Sample_v7_6_1.Features.Search
         protected override IEnumerable<IContentIndexService<IContent>> RegisterContentIndexingServices()
         {
             yield return new ArticleContentIndexService();
+            yield return new GuideContentIndexService();
         }
 
         protected override IEnumerable<IMediaIndexService<IMedia>> RegisterMediaIndexingServices()

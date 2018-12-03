@@ -65,6 +65,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Attributes\DocumentTypeAttribute.cs" />
     <Compile Include="Config\DashboardHelper.cs" />
     <Compile Include="Config\DefaultIndexNameResolver.cs" />
     <Compile Include="Config\FromConfigSearchSettings.cs" />

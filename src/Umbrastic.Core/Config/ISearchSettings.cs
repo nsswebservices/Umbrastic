@@ -7,6 +7,7 @@ namespace Umbrastic.Core.Config
         string Host { get; }
         string IndexEnvironmentPrefix { get; }
         string IndexName { get; }
+        string DefaultTypeName { get; }
 
         IEnumerable<KeyValuePair<string, string>> AdditionalData { get; }
     }

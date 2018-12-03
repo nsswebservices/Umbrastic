@@ -9,6 +9,7 @@ using Umbraco.Core.Logging;
 using Umbraco.Core.Models;
 using Umbraco.Core.Services;
 using Umbraco.Web;
+using Umbrastic.Core.Attributes;
 using Umbrastic.Core.Config;
 using Umbrastic.Core.Domain;
 using Umbrastic.Core.Utils;
@@ -21,10 +22,10 @@ namespace Umbrastic.Core.Indexing.Impl
           where TSearchSettings : ISearchSettings
     {
         private readonly IElasticClient _client;
-        private readonly UmbracoContext _umbracoContext;
-        private readonly Lazy<string> _indexTypeName;
+        private readonly UmbracoContext _umbracoContext;    
 
-        protected string IndexTypeName => _indexTypeName.Value;     
+        // NH/RH - TODO - refactor, property is no longer required - DocumentTypeName can be used instead
+        protected string IndexTypeName => DocumentTypeName;
 
         protected TSearchSettings SearchSettings { get; }
 
@@ -32,18 +33,12 @@ namespace Umbrastic.Core.Indexing.Impl
         {
             _client = client;
             _umbracoContext = umbracoContext;
-            SearchSettings = searchSettings;
-            _indexTypeName = new Lazy<string>(InitialiseIndexTypeName);
+            SearchSettings = searchSettings;         
         }
 
         protected IndexService(TSearchSettings searchSettings)
             : this(UmbracoSearchFactory.Client, UmbracoContext.Current, searchSettings)
         {
-        }
-
-        protected virtual string InitialiseIndexTypeName()
-        {
-            return typeof(TUmbracoDocument).GetCustomAttribute<ElasticsearchTypeAttribute>()?.Name;
         }
 
         public void Index(TUmbracoEntity entity, string indexName = null)
@@ -65,26 +60,36 @@ namespace Umbrastic.Core.Indexing.Impl
             client.Index(document, i => i.Index(indexName).Id(document.Id));
         }
 
-        public void UpdateIndexTypeMapping(string indexName)
+        public TypeMappingDescriptor<IUmbracoDocument> UpdateTypeMappingDescriptor(
+            TypeMappingDescriptor<IUmbracoDocument> typeMappingDescriptor)
         {
-            var mapping = _client.GetMapping<TUmbracoDocument>(m => m.Index(indexName));
-            if (!mapping.IsValid)
+            if(typeMappingDescriptor == null)
             {
-                UpdateIndexTypeMappingCore(_client, indexName);
-                LogHelper.Info(GetType(),
-                    () =>
-                        $"Updated content type mapping for '{typeof(TUmbracoDocument).Name}' using type name '{InitialiseIndexTypeName()}'");
+                var ex = new ArgumentNullException("typeMappingDescriptor");
+                LogHelper.Error(GetType(), $"Error creating type mapping for entity {typeof(TUmbracoDocument).Name}", ex);
+                throw ex;
             }
+
+            return typeMappingDescriptor.AutoMap<TUmbracoDocument>();
         }
 
         public string EntityTypeName { get; } = typeof(TUmbracoDocument).Name;
 
         public string DocumentTypeName { get; } =
-            typeof(TUmbracoDocument).GetCustomAttribute<ElasticsearchTypeAttribute>().Name;
+            typeof(TUmbracoDocument).GetCustomAttribute<DocumentTypeAttribute>()?.Name ?? typeof(TUmbracoDocument).Name;
 
         public long CountOfDocumentsForIndex(string indexName)
         {
-            var response = _client.Count<TUmbracoDocument>(c => c.Index(indexName).Type(DocumentTypeName));
+            // NH - TO DO - abstract this query into helper or query base class
+            var response = _client.Count<TUmbracoDocument>(c => c
+                .Index(indexName)
+                .Query(q => q
+                    .Bool(b => b
+                        .Filter(f => f
+                            .Term(t => t.Type, DocumentTypeName)
+                ))));
+
+
             if (response.IsValid)
             {
                 return response.Count;
@@ -151,7 +156,8 @@ namespace Umbrastic.Core.Indexing.Impl
                 var doc = new TUmbracoDocument
                 {
                     Id = IdFor(contentInstance),
-                    Url = UrlFor(contentInstance)
+                    Url = UrlFor(contentInstance),
+                    Type = DocumentTypeName
                 };
 
                 Create(doc, contentInstance);

@@ -21,6 +21,8 @@ namespace Umbrastic.Core.Config
         }
 
         public string IndexName { get; } = nameof(IndexName).FromAppSettingsWithPrefix(Prefix, "umbrastic");
+        public string DefaultTypeName { get; } = nameof(DefaultTypeName).FromAppSettingsWithPrefix(Prefix, "_doc");
+
 
         public IEnumerable<KeyValuePair<string, string>> AdditionalData { get; } = GetAdditionalData($"{Prefix}{nameof(AdditionalData)}:");
 

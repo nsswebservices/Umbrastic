@@ -36,6 +36,7 @@ namespace Umbrastic.Core.EventHandlers
         {
             var connection = new ConnectionSettings(new Uri(searchSettings.Host));
             connection.DefaultIndex(indexName);
+            connection.DefaultTypeName(searchSettings.DefaultTypeName);
 
             return new ElasticClient(connection);
         }

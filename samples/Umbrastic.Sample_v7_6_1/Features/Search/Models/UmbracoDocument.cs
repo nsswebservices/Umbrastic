@@ -20,5 +20,8 @@ namespace Umbrastic.Sample_v7_6_1.Features.Search.Models
 
         [Keyword]
         public string Url { get; set; }
+
+        [Keyword]
+        public string Type { get; set; }
     }
 }

@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using Umbraco.Web;
 using Umbrastic.Core.Utils;
 using Umbrastic.Core.Management;
+using Umbrastic.Core.Domain;
 
 namespace Umbrastic.Core.Indexing.Impl
 {
@@ -46,14 +47,20 @@ namespace Umbrastic.Core.Indexing.Impl
         }
 
         public async Task CreateAsync()
-        {       
-            var response = await _indexStrategy.CreateAsync();
+        {
+            var typeMappingDescriptor = new TypeMappingDescriptor<IUmbracoDocument>();
 
-            if (response.IndexResponse.IsValid)
-            {                
-                Parallel.ForEach(UmbracoSearchFactory.GetContentIndexServices(), c => c.UpdateIndexTypeMapping(response.IndexName));
-                Parallel.ForEach(UmbracoSearchFactory.GetMediaIndexServices(), c => c.UpdateIndexTypeMapping(response.IndexName));
+            foreach(var c in UmbracoSearchFactory.GetContentIndexServices())
+            {
+                typeMappingDescriptor = c.UpdateTypeMappingDescriptor(typeMappingDescriptor);
             }
+
+            foreach (var m in UmbracoSearchFactory.GetMediaIndexServices())
+            {
+                typeMappingDescriptor = m.UpdateTypeMappingDescriptor(typeMappingDescriptor);
+            }
+
+            await _indexStrategy.CreateAsync(typeMappingDescriptor);
         }
 
         public async Task DeleteIndexAsync(string indexName)

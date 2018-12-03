@@ -14,5 +14,9 @@
         /// </summary>
         /// <remarks>Recommendation: make this a relative url</remarks>
         string Url { get; set; }
+        /// <summary>
+        /// Gets or sets the Type of this document, this is typically the umbraco document type alias.
+        /// </summary>
+        string Type { get; set; }
     }
 }
