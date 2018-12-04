@@ -1,0 +1,9 @@
+﻿{
+  javascript: [
+    "~/App_Plugins/umbrastic/umbrastic.resource.js",
+    "~/App_Plugins/umbrastic/umbrastic.controller.js"
+  ],
+  "css": [
+    "~/App_Plugins/umbrastic/umbrastic.css"
+  ]
+}
