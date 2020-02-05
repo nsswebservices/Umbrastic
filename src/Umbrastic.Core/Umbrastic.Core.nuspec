@@ -11,7 +11,8 @@
 		<description>Provides integration between Umbraco content and Elasticsearch as a search platform</description>
 		<dependencies>
 			<dependency id="UmbracoCms.Core" version="[7.6.0,8.0)" />
-			<dependency id="NEST" version="6.4.0" />
+			<dependency id="NEST" version="[6.8.3,7.0)" />
+      <dependency id="Elasticsearch.Net" version="[6.8.3,7.0)" />
 		</dependencies>	
 	</metadata>
 	<files>

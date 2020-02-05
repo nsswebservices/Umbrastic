@@ -251,6 +251,12 @@
     <Reference Include="UmbracoExamine, Version=0.7.0.21988, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\src\packages\UmbracoCms.Core.7.12.4\lib\net45\UmbracoExamine.dll</HintPath>
     </Reference>
+    <Reference Include="Umbrastic, Version=0.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\src\packages\Umbrastic.0.2.0\lib\net461\Umbrastic.dll</HintPath>
+    </Reference>
+    <Reference Include="Umbrastic.Core, Version=0.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\src\packages\Umbrastic.Core.0.2.0\lib\net461\Umbrastic.Core.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
@@ -346,16 +352,6 @@
   <ItemGroup>
     <Analyzer Include="..\..\src\packages\Microsoft.CodeAnalysis.Analyzers.1.0.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.Analyzers.dll" />
     <Analyzer Include="..\..\src\packages\Microsoft.CodeAnalysis.Analyzers.1.0.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.CSharp.Analyzers.dll" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\src\Umbrastic.Core\Umbrastic.Core.csproj">
-      <Project>{3e4e4525-e340-424d-b525-9a6b43715a96}</Project>
-      <Name>Umbrastic.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\src\Umbrastic\Umbrastic.csproj">
-      <Project>{d32d00f2-ce1d-43a6-84de-957e000a886f}</Project>
-      <Name>Umbrastic</Name>
-    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

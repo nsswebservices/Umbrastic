@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28010.2036
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29709.97
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Umbrastic", "Umbrastic\Umbrastic.csproj", "{D32D00F2-CE1D-43A6-84DE-957E000A886F}"
 EndProject
@@ -10,6 +10,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Umbrastic.Sample_v7_6_1", "..\samples\Umbrastic.Sample_v7_6_1\Umbrastic.Sample_v7_6_1.csproj", "{1E2B3239-FACD-4C58-8C8C-E09EF17D22D5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Umbrastic.Sample_v7_12_4", "..\samples\Umbrastic.Sample_v7_12_4\Umbrastic.Sample_v7_12_4.csproj", "{3D1F672F-8BAC-4B45-97F7-E0AB13E414F6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Umbrastic.Sample_v7_15_1", "..\samples\Umbrastic.Sample_v7_15_1\Umbrastic.Sample_v7_15_1.csproj", "{FE8E2524-FBCB-4510-86E6-98308559BB80}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{3D1F672F-8BAC-4B45-97F7-E0AB13E414F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3D1F672F-8BAC-4B45-97F7-E0AB13E414F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3D1F672F-8BAC-4B45-97F7-E0AB13E414F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FE8E2524-FBCB-4510-86E6-98308559BB80}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE8E2524-FBCB-4510-86E6-98308559BB80}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE8E2524-FBCB-4510-86E6-98308559BB80}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE8E2524-FBCB-4510-86E6-98308559BB80}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
