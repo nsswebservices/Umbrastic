@@ -80,9 +80,9 @@ namespace Umbrastic.Core.Indexing.Impl
             return response.Indices.Where(x => x.Key.StartsWith($"{indexAliasName}-")).Select(x => new IndexStatusInfo
             {
                 Name = x.Key,
-                DocCount = x.Value.Total.Documents.Count,
-                Queries = x.Value.Total.Search.QueryTotal,
-                SizeInBytes = x.Value.Total.Store.SizeInBytes,
+                DocCount = x.Value.Primaries.Documents.Count,
+                Queries = x.Value.Primaries.Search.QueryTotal,
+                SizeInBytes = x.Value.Primaries.Store.SizeInBytes,
                 Status = GetStatus(x.Key)
             });
         }
